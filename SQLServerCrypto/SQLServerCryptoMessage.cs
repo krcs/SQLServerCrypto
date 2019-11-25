@@ -24,27 +24,18 @@ namespace SQLServerCrypto
 
         private string _authenticator;
 
-        public string Authenticator {
-            
-            get
-            {
-                return _authenticator;
-            }
+        public string Authenticator
+        {
+            get => _authenticator;
 
-            set
-            {
-                if (value.Length > 128)
-                    throw new ArgumentOutOfRangeException("The size of the authenticator string should not exceed 128 bytes.");
-
-                _authenticator = value;
-            }
+            set =>
+                _authenticator = value.Length > 128 ?
+                    throw new ArgumentOutOfRangeException("The size of the authenticator string should not exceed 128 bytes.")
+                    : value;
         }
         
-        public SQLServerCryptoMessage()
-        {
-            MagicNumber = MAGIC_NUMBER;
-        }
-
+        public SQLServerCryptoMessage() =>  MagicNumber = MAGIC_NUMBER;
+        
         public void CreateFromClearText(string cleartext)
         {
             MessageBytes = Encoding.ASCII.GetBytes(cleartext);

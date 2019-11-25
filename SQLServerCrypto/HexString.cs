@@ -38,16 +38,10 @@ namespace SQLServerCrypto
             _byteArray = byteArray;
         }
 
-        public string ValueWithoutPrefix
-        {
-            get => ByteArrayToHexString(_byteArray);
-        }
-
-        public string ValueWithPrefix
-        {
-            get => PREFIX + ValueWithoutPrefix;
-        }
-
+        public string ValueWithoutPrefix => ByteArrayToHexString(_byteArray);
+        
+        public string ValueWithPrefix => PREFIX + ValueWithoutPrefix;
+        
         public override string ToString() => ValueWithPrefix;
 
         public byte[] ToByteArray() => _byteArray;
