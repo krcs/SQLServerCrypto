@@ -11,8 +11,9 @@ The default encryption version for the *SQLServerCryptoMethod.EncryptByPassPhras
 
 The *SQLServerCryptoMethod.DecryptByPassPhrase* function reads the version number from the ciphertext.
 
+|                           |                  |                                   |
+| ------------------------- | ---------------- | --------------------------------- |
 | SQLServerCryptoVersion.V1 | TripleDES / SHA1 | SQL Server 2008 - SQL Server 2016 |
-| ------------------------- | ---------------- | ----------------------------------|
 | SQLServerCryptoVersion.V2 | AES256 / SHA256  | SQL Server 2017                   |
 
 You can also specify *add_authenticator* and *authenticator* arguments, just like in SQL Server methods. 
