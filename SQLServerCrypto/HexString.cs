@@ -8,7 +8,7 @@ namespace SQLServerCrypto
     {
         private readonly byte[] _byteArray;
 
-        private const string REGEX_VALIDATION_PATTERN = "^[0-9a-fA-F]+$";
+        private readonly Regex RegExValidation = new Regex("^[0-9a-fA-F]+$", RegexOptions.Compiled);
         private const string PREFIX = "0x";
 
         public HexString(string hexString)
@@ -21,7 +21,7 @@ namespace SQLServerCrypto
             if (hexString.Length % 2 != 0)
                 throw new ArgumentException("Invalid number of hexcharacters.");
 
-            if (!Regex.IsMatch(hexString, REGEX_VALIDATION_PATTERN))
+            if (!RegExValidation.IsMatch(hexString))
                 throw new ArgumentException("Input string does not contain hexadecimal characters.");
 
             _byteArray = HexStringToByteArray(hexString);
